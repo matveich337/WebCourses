@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "social-network"
+      POSTGRES_USER: "matvii"
+      POSTGRES_PASSWORD: "qwerty"
+    ports:
+      - "5432:5432"
+  admin:
+    image: adminer
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+  api:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - 4122:4122

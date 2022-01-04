@@ -1,0 +1,24 @@
+{
+  "name": "webcourses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matveich337/WebCourses.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matveich337/WebCourses/issues"
+  },
+  "homepage": "https://github.com/matveich337/WebCourses#readme",
+  "devDependencies": {
+    "husky": "^7.0.4"
+  }
+}
