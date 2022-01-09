@@ -1,7 +1,5 @@
 .post-wrapper {
     border: 1px solid white;
-    padding: 20px 20px;
-    margin-top: 30px;
     border-radius: 4px;
 }
 
@@ -9,11 +7,6 @@
     width: 400px;
 }
 
-.post-wrapper p {
-    text-align: start;
-}
-
 .post-wrapper .post-date {
     font-size: 12px;
-    text-align: end;
 }
