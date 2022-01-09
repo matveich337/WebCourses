@@ -16,8 +16,12 @@ services:
     ports:
       - 8080:8080
   api:
-    build: .
+    image: node:16
+    working_dir: /src
     depends_on:
       - postgres
     ports:
-      - 4122:4122
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - ./:/src
+    command: sh -c "npx nodemon -r dotenv/config src/app.js"
