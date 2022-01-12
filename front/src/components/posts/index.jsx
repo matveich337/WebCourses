@@ -20,3 +20,5 @@ export function Posts({ postDescription, postCity, catNickname, postDate, image=
         </div>
     );
 }
+
+export default Posts;

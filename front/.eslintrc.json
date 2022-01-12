@@ -5,8 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb",
-        "prettier"
+        "airbnb"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -16,8 +15,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "prettier"
+        "react"
     ],
     "rules": {
         "linebreak-style": 0,
