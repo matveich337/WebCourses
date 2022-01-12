@@ -1,11 +1,12 @@
-header button {
+header a {
     margin-right: 7px;
-    text-transform: capitalize;
     padding: 5px 10px;
     border-radius: 6px;
     font-size: 14px;
     border: 1px solid #000000;
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
 }
 
 header .active {
@@ -17,5 +18,7 @@ header {
     padding: 15px 0;
     background-color: #E6E6E6;
     border-bottom: 1px solid #DCDCDC;
+    width: 100%;
+    text-align: center;
 }
 
