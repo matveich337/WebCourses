@@ -4,7 +4,6 @@ import { Navigate } from 'react-router';
 const RegularRoute = () => {
     const params = useParams();
     const {id} = params;
-    console.log(params)
 
     const renderString = () => {
         if(id.match(/^\d+$/)) {
