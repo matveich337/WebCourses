@@ -1,6 +1,33 @@
 const { models } = require('../services/sequelize');
 
 module.exports = function (app) {
+  app.get('/blogs', async (req, res) => {
+
+    const blogs = await models.blog.findAll();
+
+    if (blogs === null) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(blogs);
+    }
+  });
+
+  app.get('/my-blogs/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const blogs = await models.blog.findAll({
+      where: {
+        user_id: id,
+      },
+    });
+
+    if (blogs === null) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(blogs);
+    }
+  });
+
   app.get('/blogs/:id', async (req, res) => {
     const { id } = req.params;
 

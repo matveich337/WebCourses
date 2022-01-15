@@ -1,6 +1,17 @@
 const { models } = require('../services/sequelize');
 
 module.exports = function (app) {
+  app.get('/users', async (req, res) => {
+
+    const users = await models.users.findAll();
+
+    if (users === null) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(users);
+    }
+  });
+
   app.get('/users/:id', async (req, res) => {
     const { id } = req.params;
 

@@ -13,6 +13,38 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/comments-blog/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const comments = await models.comment.findAll({
+      where: {
+        blog_id: id,
+      },
+    });
+
+    if (comments === null) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(comments);
+    }
+  });
+
+  app.get('/my-comments/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const comments = await models.comment.findAll({
+      where: {
+        user_id: id,
+      },
+    });
+    
+    if (comments === null) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(comments);
+    }
+  });
+
   app.post('/comments', async (req, res) => {
     try {
       await models.comment.create(req.body);

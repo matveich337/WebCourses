@@ -13,12 +13,28 @@ module.exports = function (app) {
     }
   });
 
-  app.get('/all-likes/:id', async (req, res) => {
+  app.get('/my-likes/:id', async (req, res) => {
     const { id } = req.params;
 
     const likes = await models.like.findAll({
       where: {
         user_id: id,
+      },
+    });
+
+    if (likes === null) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(likes);
+    }
+  });
+
+  app.get('/likes-blog/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const likes = await models.like.findAll({
+      where: {
+        blog_id: id,
       },
     });
 
