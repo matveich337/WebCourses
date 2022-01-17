@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import "./style.css"
 
-export function Posts({ postDescription, postCity, catNickname, postDate, image=null }) {
+const Posts = ({ postDescription, postCity, catNickname, postDate, image }) => {
     return (
         <div className="post-wrapper">
             <h1>Posts</h1>
@@ -19,6 +20,19 @@ export function Posts({ postDescription, postCity, catNickname, postDate, image=
             </p>
         </div>
     );
+}
+
+Posts.propTypes = {
+    postDescription: PropTypes.string,
+    postCity: PropTypes.string.isRequired,
+    catNickname: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    postDate: PropTypes.string.isRequired
+}
+
+Posts.defaultProps = {
+    description: "N/A",
+    image: null
 }
 
 export default Posts;
