@@ -1,10 +1,11 @@
-import { Posts } from "../../components/posts";
+import PropTypes from 'prop-types';
+import Posts from "../../components/posts";
 
-export function PostsContainer({ description, city, nickname, image, date }) {
-    const postDescription = `Опис: ${description}`;
-    const postCity = `Місто: ${city}`;
-    const catNickname = `Кличка: ${nickname}`;
-    const postDate = `Дата: ${date}`;
+const PostsContainer = ({ description, city, nickname, image, date }) => {
+    const postDescription = `Description: ${description}`;
+    const postCity = `City: ${city}`;
+    const catNickname = `Nickname: ${nickname}`;
+    const postDate = `Date: ${date}`;
 
     return (
         <Posts
@@ -16,3 +17,18 @@ export function PostsContainer({ description, city, nickname, image, date }) {
         />
     );
 }
+
+PostsContainer.propTypes = {
+    description: PropTypes.string,
+    city: PropTypes.string.isRequired,
+    nickname: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    date: PropTypes.string.isRequired
+}
+
+PostsContainer.defaultProps = {
+    description: "N/A",
+    image: "N/A"
+}
+
+export default PostsContainer;

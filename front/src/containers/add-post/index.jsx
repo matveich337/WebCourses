@@ -1,6 +1,6 @@
 import AddPost from "../../components/add-post";
 
-export function AddPostContainer({  }) {
+export function AddPostContainer({}) {
 
     return (
         <AddPost />

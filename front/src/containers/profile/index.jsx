@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import Profile from "../../components/profile";
 
-export function ProfileContainer({ name, email, image, description }) {
-    const profileDescription = `Опис: ${description}`;
-    const profileName = `Ім'я: ${name}`;
-    const profileEmail = `Пошта: ${email}`;
-
+const ProfileContainer = ({ name, email, image, description }) => {
+    const profileDescription = `Description: ${description}`;
+    const profileName = `Name: ${name}`;
+    const profileEmail = `Email: ${email}`;
+    
     return (
         <Profile
             image={image}
@@ -14,3 +15,17 @@ export function ProfileContainer({ name, email, image, description }) {
         />
     );
 }
+
+ProfileContainer.propTypes = {
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    description: PropTypes.string
+}
+
+ProfileContainer.defaultProps = {
+    image: "N/A",
+    description: "N/A"
+}
+
+export default ProfileContainer;

@@ -7,7 +7,7 @@ export function HeaderContainer({}) {
     const location = useLocation();
     const {pathname} = location;
     const renderButtons = buttons.map((el, idx) => <Link key={idx} className={pathname === el.link ? "active" : ""} to = {el.link}>{el.name}</Link>)
-
+    
     return (
         <Header buttons={renderButtons} />
     );
