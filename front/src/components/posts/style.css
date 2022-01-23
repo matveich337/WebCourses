@@ -1,13 +1,29 @@
-.post-wrapper {
+.posts-wrapper {
     border: 1px solid white;
     border-radius: 4px;
     text-align: center;
 }
 
-.post-wrapper img {
+.posts-wrapper img {
     width: 400px;
 }
 
-.post-wrapper .post-date {
+.posts-wrapper .post-date {
     font-size: 12px;
+}
+
+.posts {
+    display: flex;
+    justify-content: center;
+    padding: 20px 50px;
+}
+
+.single-post {
+    margin-right: 40px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
 }

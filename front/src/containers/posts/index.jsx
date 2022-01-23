@@ -1,34 +1,19 @@
 import PropTypes from 'prop-types';
 import Posts from "../../components/posts";
+import { useQuery } from 'react-query'
 
-const PostsContainer = ({ description, city, nickname, image, date }) => {
-    const postDescription = `Description: ${description}`;
-    const postCity = `City: ${city}`;
-    const catNickname = `Nickname: ${nickname}`;
-    const postDate = `Date: ${date}`;
+import { getPost } from "./api/crud";
+
+const PostsContainer = ({ }) => {
+
+    const { isFetching, refetch, data } = useQuery('blogs', () => getPost());
+    const blogs = data?.data;
 
     return (
-        <Posts
-            postDescription={postDescription}
-            postCity={postCity}
-            catNickname={catNickname}
-            postDate={postDate}
-            image={image}
-        />
+        <>
+            {isFetching ? <div>LOADING...</div> : <Posts blogs={blogs} />}
+        </>
     );
-}
-
-PostsContainer.propTypes = {
-    description: PropTypes.string,
-    city: PropTypes.string.isRequired,
-    nickname: PropTypes.string.isRequired,
-    image: PropTypes.string,
-    date: PropTypes.string.isRequired
-}
-
-PostsContainer.defaultProps = {
-    description: "N/A",
-    image: "N/A"
 }
 
 export default PostsContainer;
