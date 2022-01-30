@@ -1,4 +1,5 @@
 const { models } = require('../services/sequelize');
+const { unlink } = require('fs');
 
 module.exports = function (app) {
   app.get('/users', async (req, res) => {
@@ -49,6 +50,27 @@ module.exports = function (app) {
       res.status(400).send({ message: 'bad request' });
     }
   });
+
+  app.post('/user-avatar/:id', async function (req, res, next) {
+    let filedata = req.file;
+  
+    if (!filedata) {
+      return res.status(400).send({ message: 'bad request' });
+    } else {
+      const user = await models.users.findByPk(req.params.id);
+      const currentImage = user.dataValues.profile_image;
+  
+      if (currentImage) {
+        await unlink('./' + currentImage, (err) => {
+          if (err) throw err;
+        });
+      }
+  
+      await models.users.update({ profile_image: "/media/" + req.file.filename }, { where: { user_id: req.params.id } }).then(function () {
+        return res.status(200).end();
+      })
+    }
+  })
 
   app.put('/users/:id', async (req, res) => {
     try {
