@@ -24,6 +24,22 @@ module.exports = function (app) {
     }
   });
 
+  app.get('/user-avatar/:id', async (req, res) => {
+    const { id } = req.params;
+    const user = await models.users.findByPk(id);
+
+    if (user === null) {
+      res.status(404).send();
+    } else {
+      const currentImage = user.dataValues.profile_image;
+      if (currentImage) {
+        res.status(200).send({profile_image: req.headers.host + currentImage});
+      } else {
+        res.status(400).send({ message: 'bad request' });
+      }
+    }
+  });
+
   app.post('/users', async (req, res) => {
     try {
       await models.users.create(req.body);

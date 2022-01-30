@@ -35,9 +35,9 @@ module.exports = (sequelize) => {
       role_id: {
         type: DataTypes.NUMBER,
       },
-      password: {
-        type: DataTypes.TEXT,
-      },
+      profile_image: {
+        type: DataTypes.TEXT
+      }
     },
     {
       modelName: 'User',
