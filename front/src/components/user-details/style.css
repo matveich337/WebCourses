@@ -1,13 +1,10 @@
 .user-details-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 20px 50px;
+    margin-top: 40px;
+}
+
+.user-details-wrapper > div {
     border: 1px solid #000;
-    border-radius: 6px;
-    padding: 10px 30px;
-    font-size: 14px;
-    font-weight: 400;
-    margin: 20px 20px;
 }

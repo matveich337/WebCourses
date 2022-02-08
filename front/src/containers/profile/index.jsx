@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Profile from "../../components/profile";
+import { getUser, editUser } from './api/crud';
 
 const ProfileContainer = ({ name, email, image, description }) => {
     const profileDescription = `Description: ${description}`;
@@ -12,6 +13,8 @@ const ProfileContainer = ({ name, email, image, description }) => {
             name={profileName}
             description={profileDescription}
             email={profileEmail}
+            getUser={getUser}
+            editUser={editUser}
         />
     );
 }

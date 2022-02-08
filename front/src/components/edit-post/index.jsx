@@ -3,12 +3,22 @@ import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { useParams } from "react-router";
+import { useQuery } from 'react-query';
 import * as Yup from 'yup';
 
-const AddPost = ({ addPost }) => {
+const EditPost = ({ editPost, getSinglePost }) => {
     const navigate = useNavigate();
+    const params = useParams();
+    const { id } = params;
+    const { isFetching, refetch, data } = useQuery('single-post', () => getSinglePost(id));
+    const post = data?.data;
 
-    const AddPostSchema = Yup.object().shape({
+    if (!post) return null;
+
+    const { blog_text, user_id, created_at } = post;
+
+    const EditPostSchema = Yup.object().shape({
         text: Yup.string()
             .min(2, 'Too Short!')
             .max(1000, 'Too Long!')
@@ -22,23 +32,24 @@ const AddPost = ({ addPost }) => {
     });
 
     return <>
-        <h1>Add post</h1>
+        <h1>Edit post №{id}</h1>
         <Formik
             initialValues={{
-                text: '',
-                userId: ''
+                text: blog_text,
+                userId: user_id,
             }}
-            validationSchema={AddPostSchema}
+            validationSchema={EditPostSchema}
             onSubmit={(values) => {
-                addPost({ blog_text: values.text, user_id: values.userId, created_at: new Date(), updated_at: new Date() }).then(res => {
-                    if (res && res.status && res.status === 201) {
+                editPost(id, { blog_text: values.text, user_id: values.userId, created_at, updated_at: new Date() }).then(res => {
+                    if (res && res.status && res.status === 200) {
                         navigate('/')
                     }
                 })
             }}
+            enableReinitialize={true}
         >
             {({ errors, touched }) => (
-                <Form className="add-post-form">
+                <Form className="edit-post-form">
                     <Field id="text" type="text" name="text" placeholder="Text..." />
                     {errors.text && touched.text ? (
                         <div className="field-error">{errors.text}</div>
@@ -48,7 +59,7 @@ const AddPost = ({ addPost }) => {
                         <div className="field-error">{errors.userId}</div>
                     ) : null}
                     <Stack>
-                        <Button type="submit" variant="contained">Create post</Button >
+                        <Button type="submit" variant="contained">Edit post</Button >
                     </Stack>
                 </Form>
             )}
@@ -56,4 +67,4 @@ const AddPost = ({ addPost }) => {
     </>
 }
 
-export default AddPost;
+export default EditPost;

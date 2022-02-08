@@ -25,5 +25,20 @@
     padding: 10px 30px;
     font-size: 14px;
     font-weight: 400;
+    position: relative;
+}
+
+.single-post img {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 17px;
     cursor: pointer;
+    display: none;
+}
+
+.single-post:hover {
+    & img {
+        display: block;
+    }
 }
