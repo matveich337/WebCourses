@@ -1,17 +1,24 @@
 import "./style.css";
 import PropTypes from "prop-types";
 import Users from "../users/users";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const UserDetails = ({ birth, description, email, first_name, last_name, phone_number, status, university }) => {
     return (
         <div className="user-details-wrapper">
-            <p>Name: {first_name} {last_name}</p>
-            <p>Birth: {birth}</p>
-            <p>Description: {description}</p>
-            <p>Email: {email}</p>
-            <p>Phone number: {phone_number}</p>
-            <p>Status: {status}</p>
-            <p>University: {university}</p>
+            <Card>
+                <CardContent>
+                    <Typography>Name: {first_name} {last_name}</Typography>
+                    <Typography>Birth: {birth}</Typography>
+                    <Typography>Description: {description}</Typography>
+                    <Typography>Email: {email}</Typography>
+                    <Typography>Phone number: {phone_number}</Typography>
+                    <Typography>Status: {status}</Typography>
+                    <Typography>University: {university}</Typography>
+                </CardContent>
+            </Card>
         </div>
     )
 }
